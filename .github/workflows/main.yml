@@ -12,11 +12,11 @@
         with:
           node-version: 18
       - name: Install YNIT
-        run: npm install ynab_investment_tracking && cd node_modules/ynab_investment_tracking
+        run: npm install ynab_investment_tracking
       - name: Run YNIT
         shell: bash
         env:
           YNAB_API_TOKEN: ${{ secrets.YNAB_API_TOKEN }}
           YNAB_BUDGET_ID: ${{ secrets.YNAB_BUDGET_ID }}
-        run: npm run start
+        run: cd node_modules/ynab_investment_tracking && npm run start
         
