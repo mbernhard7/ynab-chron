@@ -1,0 +1,16 @@
+ name:
+  Daily YNAB Chron Jobs
+ on:
+  schedule:
+    - cron: "*/5 * * * *"
+ jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run linting rules and tests
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install ynab_investment_tracking
+      - run: cd node_modules/ynab_investment_tracking && YNAB_API_TOKEN=1elMRnykVaMfte0XyH0ofxpTjbMkD0DjRmGtJwol6w8 YNAB_BUDGET_ID=d4f14b28-7134-4f16-bea2-a5e7745aef75 npm run start
+        
