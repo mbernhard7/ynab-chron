@@ -7,15 +7,16 @@
   ynit:
     runs-on: ubuntu-latest
     steps:
-      - name: Run YNIT
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - shell: bash
+      - name: Install YNIT
+        run: npm install ynab_investment_tracking && cd node_modules/ynab_investment_tracking
+      - name: Run YNIT
+        shell: bash
         env:
           YNAB_API_TOKEN: ${{ secrets.YNAB_API_TOKEN }}
           YNAB_BUDGET_ID: ${{ secrets.YNAB_BUDGET_ID }}
-      - run: npm install ynab_investment_tracking
-      - run: cd node_modules/ynab_investment_tracking
-      - run: npm run start
+        run: npm run start
         
