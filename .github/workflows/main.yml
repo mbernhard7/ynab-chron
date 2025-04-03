@@ -2,7 +2,7 @@
   Daily YNAB Chron Jobs
  on:
   schedule:
-    - cron: "0 14-21 * * *"
+    - cron: "0 14,21 * * *"
  jobs:
   ynit:
     runs-on: ubuntu-latest
